@@ -1,0 +1,32 @@
+<script src="lunr.js"></script>
+<script src="lunr.autocomplete.js"></script>
+
+<script>
+	// some docs…
+	var docs = 
+	[
+	{
+		"id"    : "1",
+		"title"   : "The Hunting of the Snark",
+		"content" : "A map showing where to find the deadly snark, hidden amidst bandersnatch, beamish, frumious, galumphing, jubjub, mimsiest, outgrabe and uffish. Held by a bellman, this map is considered equally useful wherever one is. It has been used to successfully find the creature once, although the discoverer, a baker, vanished without a trace. He left behind friends such as a beaver, butcher, and boots."
+	},
+	{
+		"id"    : "2",
+		"title"   : "Jabberwocky",
+		"content" : "Beware the Jabberwock, my son! The jaws that bite, the claws that catch! Beware the Jubjub bird, and shun The frumious Bandersnatch!"
+	}
+	];
+
+	// setting up the index
+	var idx = lunr(function () {
+		this.field('title');
+		this.field('content');
+
+		this.use(lunr.autocomplete, 4);
+	});
+
+	// loading the documents into the index
+	docs.forEach(function (doc) { idx.add(doc) });
+
+	console.log(idx.autocomplete("jabberwock"));
+</script>
