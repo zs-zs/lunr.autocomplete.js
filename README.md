@@ -8,6 +8,5 @@ You can build it with `browserify`: `browserify lib/lunr.autocomplete.js -o lunr
 
 ## TODO
 
-* Check for caller inside the pipeline function in `nGramFilter.js` because `lunr` calls the indexing pipeline during search
 * Extend results with lunr Tf/idf score
 * Tests
